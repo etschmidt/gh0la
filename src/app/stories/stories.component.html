@@ -3,16 +3,16 @@
 </div>
 
 <div *ngIf="items">
-  <ol>
+  <ol start="{{ listStart }}">
     <li *ngFor="let item of items" class="post">
       <item class="item-block" [item]="item"></item>
     </li>
   </ol>
   <div class="nav">
-    <a class="prev">
+    <a *ngIf="listStart !== 1" [routerLink]="['/' + storiesType, pageNum - 1]" class="prev">
       ‹ Prev
     </a>
-    <a class="more">
+    <a *ngIf="items.length === 30" [routerLink]="['/' + storiesType, pageNum + 1]" class="more">
       More ›
     </a>
   </div>
